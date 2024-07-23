@@ -6,6 +6,7 @@ import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import HomePage from './pages/HomePages';
 import NotFound from './pages/NotFound';
+import AlbumPage from './pages/AlbumPage';
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
         <Route path='/'element = {<HomePage/>} />
         <Route path='/login'element = {<LoginPage/>} />
         <Route path='/register'element = {<RegisterPage/>} />
+        <Route path='/albums'element = {<AlbumPage/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
