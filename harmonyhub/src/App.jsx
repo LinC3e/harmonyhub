@@ -9,20 +9,22 @@ import NotFound from './pages/NotFound';
 import AlbumPage from './pages/AlbumPage';
 
 function App() {
-  
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route path='/'element = {<HomePage/>} />
-        <Route path='/login'element = {<LoginPage/>} />
-        <Route path='/register'element = {<RegisterPage/>} />
-        <Route path='/albums'element = {<AlbumPage/>} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <div className="flex-grow">
+          <Header />
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/albums' element={<AlbumPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </Router>
-  
   )
 }
 
