@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-      <p className="text-orange-400">Footer</p>
+      <p className="text-red-400 ">Footer</p>
     )
   }
   

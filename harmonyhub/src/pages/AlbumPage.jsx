@@ -1,7 +1,9 @@
+import AlbumsList from "../components/app/Albums";
+
 const AlbumPage = () => {
     return (
-        <p className="text-orange-400">Pagina de AlbumPage</p>
-    )
+        <AlbumsList />
+    );
 }
 
 export default AlbumPage
