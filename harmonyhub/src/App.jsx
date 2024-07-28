@@ -1,5 +1,4 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import './App.css';
 import Footer from './components/layouts/footer';
 import Header from './components/layouts/Header';
 import LoginPage from './pages/auth/LoginPage';
@@ -11,21 +10,23 @@ import AlbumPage from './pages/AlbumPage';
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
-        <div className="flex-grow">
-          <Header />
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/albums' element={<AlbumPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+      <div className="flex min-h-screen">
+        <Header className="w-2/5 min-w-max" />
+        <div className="flex-grow flex flex-col">
+          <div className="flex-grow">
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/login' element={<LoginPage />} />
+              <Route path='/register' element={<RegisterPage />} />
+              <Route path='/albums' element={<AlbumPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+          <Footer className="flex-shrink-0"/>
         </div>
-        <Footer />
       </div>
     </Router>
-  )
+  );
 }
 
 export default App
