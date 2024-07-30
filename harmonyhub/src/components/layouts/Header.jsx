@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { FaHome, FaBook } from 'react-icons/fa';
+import { FaHome, FaBook, FaUser } from 'react-icons/fa';
 
 const Header = () => {
   return (
@@ -10,6 +10,9 @@ const Header = () => {
         </Link>
       </div>
       <nav className="flex flex-col w-full px-4">
+        <Link to="/login" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+          <FaUser className="mr-2" /> Iniciar Sesion
+        </Link>
         <Link to="/" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
           <FaHome className="mr-2" /> Inicio
         </Link>

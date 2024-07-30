@@ -7,24 +7,29 @@ import HomePage from './pages/HomePages';
 import NotFound from './pages/NotFound';
 import AlbumPage from './pages/AlbumPage';
 
+// Auth
+import { AuthProvider } from './hooks/authContext';
+
 function App() {
   return (
     <Router>
-      <div className="flex min-h-screen">
-        <Header className="w-2/5 min-w-max" />
-        <div className="flex-grow flex flex-col">
-          <div className="flex-grow">
-            <Routes>
-              <Route path='/' element={<HomePage />} />
-              <Route path='/login' element={<LoginPage />} />
-              <Route path='/register' element={<RegisterPage />} />
-              <Route path='/albums' element={<AlbumPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+      <AuthProvider>
+        <div className="flex min-h-screen">
+          <Header className="w-2/5 min-w-max" />
+          <div className="flex-grow flex flex-col">
+            <div className="flex-grow">
+              <Routes>
+                <Route path='/' element={<HomePage />} />
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/register' element={<RegisterPage />} />
+                <Route path='/albums' element={<AlbumPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+            <Footer className="flex-shrink-0" />
           </div>
-          <Footer className="flex-shrink-0"/>
         </div>
-      </div>
+      </AuthProvider>
     </Router>
   );
 }

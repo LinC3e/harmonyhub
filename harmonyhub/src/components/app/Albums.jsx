@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import useAxios from '../../hooks/useAxios';
 
 const AlbumsList = () => {
-  const { data, loading, error, callApi } = useAxios('/albums/', 'GET', []);
+  const { data, loading, error, callApi } = useAxios('harmonyhub/albums/', 'GET', []);
 
   useEffect(() => {
     callApi();
@@ -12,10 +12,11 @@ const AlbumsList = () => {
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
+  const albums = data.results || [];
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-      {data && data.length > 0 ? (
-        data.map(album => (
+      {albums && albums.length > 0 ? (
+        albums.map(album => (
           <div key={album.id} className="p-4 border border-gray-200 rounded-lg">
             <h2 className="text-xl font-semibold">{album.title}</h2>
             <p className="text-sm text-gray-600">Añadido el: {new Date(album.created_at).toLocaleString()}</p>

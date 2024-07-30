@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 
 const Songs = () => {
-  const { data, loading, error, callApi } = useAxios('/songs', 'GET', [])
+  const { data, loading, error, callApi } = useAxios('harmonyhub/songs', 'GET', [])
   
   useEffect(() => {
     callApi();

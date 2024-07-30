@@ -23,7 +23,8 @@ const useAxios = (endpoint, method, initialData = null) => {
       setData(response.data);
     } catch (err) {
       console.log(err)
-      setError(err.response ? err.response.data : 'Error');
+      const errorData = err.response ? err.response.data : 'Error';
+      setError(errorData);
     } finally {
       setLoading(false);
     }
