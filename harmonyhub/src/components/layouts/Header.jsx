@@ -15,6 +15,7 @@ const Header = () => {
         </Link>
       </div>
       <nav className="flex flex-col w-full px-4">
+        {/* sin credenciales*/}
         {!isAuthenticated && (
           <Link to="/login" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
             <FaUser className="mr-2" /> Iniciar Sesion
