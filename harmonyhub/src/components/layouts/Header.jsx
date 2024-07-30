@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom"
-import { FaHome, FaBook, FaUser } from 'react-icons/fa';
+import { FaBook, FaHome, FaUser } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+import logo from '/images/logo.png';
 
 const Header = () => {
   return (
     <header className="flex flex-col items-center py-4 min-h-screen bg-gray-900 text-white">
       <div className="mb-8">
         <Link to="/" className="text-2xl font-bold">
-          <img src="" alt="Logo" className="w-12 h-12" />
+          <img src={logo} alt="Logo" className="w-40 h-40" /> {/* tamaño del logo */}
         </Link>
       </div>
       <nav className="flex flex-col w-full px-4">
@@ -24,4 +25,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;
