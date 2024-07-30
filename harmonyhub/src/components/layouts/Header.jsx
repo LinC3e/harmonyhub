@@ -1,11 +1,11 @@
 
 import { useAuth } from "../../hooks/authContext"
-import { FaBook, FaHome, FaUser, FaRegArrowAltCircleRight } from 'react-icons/fa';
+import { FaBook, FaHome, FaUser, FaRegArrowAltCircleRight, FaAddressBook } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import logo from '/images/logo.png';
 
 const Header = () => {
-  const {logout}= useAuth ("actions")
+  const { logout } = useAuth("actions")
   const { isAuthenticated } = useAuth("state")
   return (
     <header className="flex flex-col items-center py-4 min-h-screen bg-gray-900 text-white">
@@ -24,11 +24,15 @@ const Header = () => {
         <Link to="/" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
           <FaHome className="mr-2" /> Inicio
         </Link>
-       
+        {/* con credenciales*/}
         {isAuthenticated && (
-        <><Link to="/library" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+          <><Link to="/library" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
             <FaBook className="mr-2" />Biblioteca
-          </Link><button  onClick ={logout} className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+          </Link>
+            <Link to="/albums">
+            <FaAddressBook className="mr-2" />Albums
+            </Link>
+            <button onClick={logout} className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
               <FaRegArrowAltCircleRight className="mr-2" />Log Out
             </button></>
         )}
