@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/authContext";
 import useAxios from "../hooks/useAxios";
 
@@ -8,24 +7,22 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const { data, error, callApi } = useAxios('/api-auth/', 'POST', []);
   const { login } = useAuth("actions");
-  const { isAuthenticated } = useAuth("state");
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/');
+    if (data && data.token) {
+      login(data.token);
     }
-  }, [isAuthenticated, navigate]);
+  }, [data, login]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await callApi({ username, password });
   };
-  if (!error && data && data.token) {
-    console.log(data);
-    login(data.token);
-    console.log(data.token);
+  
+  if (error) {
+    console.error('Error during login:', error);
   }
+
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center">

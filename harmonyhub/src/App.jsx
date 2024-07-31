@@ -1,12 +1,15 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+// Layouts
 import Footer from './components/layouts/footer';
 import Header from './components/layouts/Header';
-import AlbumPage from './pages/AlbumPage';
+// App
 import HomePage from './pages/HomePages';
-import LoginPage from './pages/LoginPage';
+import SongsPage from './pages/SongsPage';
+import SongDetailPage from './pages/SongDetailPage';
+import AlbumPage from './pages/AlbumPage';
 import NotFound from './pages/NotFound';
-
 // Auth
+import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './hooks/authContext';
 
 function App() {
@@ -21,6 +24,8 @@ function App() {
                 <Route path='/' element={<HomePage />} />
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/albums' element={<AlbumPage />} />
+                <Route path='/songs' element={<SongsPage />} />
+                <Route path='/songs/:id' element={<SongDetailPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>

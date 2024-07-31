@@ -54,6 +54,8 @@ function AuthProvider({ children }) {
         logout: () => {
             localStorage.removeItem('token');
             dispatch({ type: ACTIONS.LOGOUT });
+            const origin2 = location.state?.from?.pathname || "/";
+            navigate(origin2);
         },
     };
 

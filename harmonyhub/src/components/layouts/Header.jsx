@@ -1,6 +1,6 @@
 
 import { useAuth } from "../../hooks/authContext"
-import { FaBook, FaHome, FaUser, FaRegArrowAltCircleRight, FaAddressBook } from 'react-icons/fa';
+import { FaMusic, FaHome, FaUser, FaSignOutAlt, FaAddressBook } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import logo from '/images/logo.png';
 
@@ -26,14 +26,14 @@ const Header = () => {
         </Link>
         {/* con credenciales*/}
         {isAuthenticated && (
-          <><Link to="/library" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
-            <FaBook className="mr-2" />Biblioteca
+          <><Link to="/songs" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+            <FaMusic className="mr-2" />Canciones
           </Link>
-            <Link to="/albums">
-            <FaAddressBook className="mr-2" />Albums
+            <Link to="/albums" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+              <FaAddressBook className="mr-2" />Albumes
             </Link>
-            <button onClick={logout} className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
-              <FaRegArrowAltCircleRight className="mr-2" />Log Out
+            <button onClick={logout} className="flex items-center py-2 px-4 mb-2 bg-red-500 hover:bg-red-700 rounded font-bold">
+              <FaSignOutAlt className="mr-2" />Log Out
             </button></>
         )}
       </nav>
