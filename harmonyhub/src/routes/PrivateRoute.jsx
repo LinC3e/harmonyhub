@@ -1,5 +1,5 @@
-import { useAuth } from "../hooks/authContext";
 import { Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "../hooks/authContext";
 
 // eslint-disable-next-line react/prop-types
 export default function PrivateRoute({ children }) {

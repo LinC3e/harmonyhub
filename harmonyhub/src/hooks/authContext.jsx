@@ -22,6 +22,7 @@ function reducer(state, action) {
         case ACTIONS.LOGOUT:
             return {
                 isAuthenticated: false,
+                token: null,
             };
         default:
             return state;
@@ -38,11 +39,11 @@ function AuthProvider({ children }) {
     const location = useLocation();
 
     useEffect(() => {
-      const token = localStorage.getItem('token');
-      if (token) {
-          dispatch({ type: ACTIONS.LOGIN, payload: token });
-      }
-  }, []);
+        const token = localStorage.getItem('token');
+        if (token) {
+            dispatch({ type: ACTIONS.LOGIN, payload: token });
+        }
+    }, []);
 
     const actions = {
         login: (token) => {
@@ -54,8 +55,7 @@ function AuthProvider({ children }) {
         logout: () => {
             localStorage.removeItem('token');
             dispatch({ type: ACTIONS.LOGOUT });
-            const origin2 = location.state?.from?.pathname || "/";
-            navigate(origin2);
+            navigate("/login");
         },
     };
 

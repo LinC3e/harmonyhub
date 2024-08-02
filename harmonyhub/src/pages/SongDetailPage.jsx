@@ -11,7 +11,7 @@ const SongDetailPage = () => {
   }, [callApi, id]);
 
   if (loading) return <p>Cargando...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>Error: {error.detail}</p>;
 
   const song = data;
 
