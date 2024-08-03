@@ -10,6 +10,7 @@ import SongsPage from "../pages/SongsPage";
 import SongDetailPage from "../pages/SongDetailPage";
 import AlbumPage from "../pages/AlbumPage";
 import MyProfilePage from "../pages/MyProfilePage";
+import ArtistsPage from "../pages/ArtistsPage";
 
 const Router = createBrowserRouter([
     {
@@ -52,6 +53,14 @@ const Router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <AlbumPage />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: "artists",
+                element: (
+                    <PrivateRoute>
+                        <ArtistsPage />
                     </PrivateRoute>
                 ),
             },

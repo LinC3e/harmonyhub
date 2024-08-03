@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext, useEffect } from "react";
+import { createContext, useReducer, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const AuthContext = createContext({
@@ -32,18 +32,11 @@ function reducer(state, action) {
 // eslint-disable-next-line react/prop-types
 function AuthProvider({ children }) {
     const [state, dispatch] = useReducer(reducer, {
-        isAuthenticated: false,
-        token: null,
+        token: localStorage.getItem("token"),
+        isAuthenticated: localStorage.getItem("token") ? true : false,
     });
     const navigate = useNavigate();
     const location = useLocation();
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            dispatch({ type: ACTIONS.LOGIN, payload: token });
-        }
-    }, []);
 
     const actions = {
         login: (token) => {

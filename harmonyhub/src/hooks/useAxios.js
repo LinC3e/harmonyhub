@@ -12,17 +12,29 @@ const useAxios = (endpoint, method, initialData = null) => {
     setError(null);
 
     try {
-      const response = await axios({
+      console.log(token)
+      const config = {
         url: `${import.meta.env.VITE_API_URL}${endpoint}`,
         method,
         data: body,
         headers: {
           'Content-Type': 'application/json',
-          ...(token ? { 'Authorization': `Token ${token}` } : {}),
+          ...(token && { 'Authorization': `Token ${token}` }),
         },
-      });
+      };
+
+      const response = await axios(config);
       console.log(response)
       setData(response.data);
+      console.log({
+        url: `${import.meta.env.VITE_API_URL}${endpoint}`,
+        method,
+        data: body,
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token && { 'Authorization': `Token ${token}` }),
+        },
+      });
     } catch (err) {
       console.log(err)
       const errorData = err.response ? err.response.data : 'Error';
