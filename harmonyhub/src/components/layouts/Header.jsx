@@ -26,7 +26,11 @@ const Header = () => {
         </Link>
         {/* con credenciales*/}
         {isAuthenticated && (
-          <><Link to="/songs" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+          <>
+          <Link to="/profile" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+            <FaUser className="mr-2" />Perfil
+          </Link>
+          <Link to="/songs" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
             <FaMusic className="mr-2" />Canciones
           </Link>
             <Link to="/albums" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">

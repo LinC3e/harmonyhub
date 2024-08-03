@@ -83,7 +83,7 @@ const LoginPage = () => {
                   ))}
                 </ul>
               ) : (
-                <p>{error.message || error.error}</p>
+                <p>{error.detail || error.error}</p>
               )}
             </div>
           )}

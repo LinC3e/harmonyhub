@@ -5,6 +5,7 @@ const useAxios = (endpoint, method, initialData = null) => {
   const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const token = localStorage.getItem('token');
 
   const callApi = useCallback(async (body = null) => {
     setLoading(true);
@@ -17,6 +18,7 @@ const useAxios = (endpoint, method, initialData = null) => {
         data: body,
         headers: {
           'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': `Token ${token}` } : {}),
         },
       });
       console.log(response)
@@ -28,7 +30,7 @@ const useAxios = (endpoint, method, initialData = null) => {
     } finally {
       setLoading(false);
     }
-  }, [endpoint, method]);
+  }, [endpoint, method, token]);
 
   return { data, loading, error, callApi };
 };
