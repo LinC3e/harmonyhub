@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/authContext";
 import useAxios from "../hooks/useAxios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { data, error, callApi } = useAxios('/api-auth/', 'POST', []);
   const { login } = useAuth("actions");
+  const { isAuthenticated } = useAuth("state");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/albums');
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     if (data && data.token) {
@@ -74,7 +83,7 @@ const LoginPage = () => {
                   ))}
                 </ul>
               ) : (
-                <p>{error.message || error.error}</p>
+                <p>{error.detail || error.error}</p>
               )}
             </div>
           )}
