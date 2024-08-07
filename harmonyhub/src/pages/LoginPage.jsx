@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/authContext";
 import useAxios from "../hooks/useAxios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -13,19 +13,25 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/');
+      navigate('/albums');
     }
   }, [isAuthenticated, navigate]);
+
+  useEffect(() => {
+    if (data && data.token) {
+      login(data.token);
+    }
+  }, [data, login]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await callApi({ username, password });
   };
-  if (!error && data && data.token) {
-    console.log(data);
-    login(data.token);
-    console.log(data.token);
+  
+  if (error) {
+    console.error('Error during login:', error);
   }
+
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center">
@@ -77,7 +83,7 @@ const LoginPage = () => {
                   ))}
                 </ul>
               ) : (
-                <p>{error.message || error.error}</p>
+                <p>{error.detail || error.error}</p>
               )}
             </div>
           )}
