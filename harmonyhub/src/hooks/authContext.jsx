@@ -42,7 +42,7 @@ function AuthProvider({ children }) {
         login: (token) => {
             localStorage.setItem('token', token);
             dispatch({ type: ACTIONS.LOGIN, payload: token });
-            const origin = location.state?.from?.pathname || "/";
+            const origin = location.state?.from?.pathname || "/home";
             navigate(origin);
         },
         logout: () => {

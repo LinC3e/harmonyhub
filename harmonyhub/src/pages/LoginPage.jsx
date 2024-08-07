@@ -13,7 +13,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/albums');
+      navigate('/home');
     }
   }, [isAuthenticated, navigate]);
 
