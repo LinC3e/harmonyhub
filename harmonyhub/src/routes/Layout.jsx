@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { AuthProvider } from "../hooks/authContext";
 import Header from "../components/layouts/Header";
 import Footer from "../components/layouts/footer";
+import GlobalSongCard from "../components/app/GlobalCardSong";
 
 export default function Layout() {
   return (
@@ -15,6 +16,7 @@ export default function Layout() {
           </div>
         </div>
       </div>
+      <GlobalSongCard />
     </AuthProvider >
   );
 }

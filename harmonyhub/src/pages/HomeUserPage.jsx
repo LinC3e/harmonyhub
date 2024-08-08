@@ -5,8 +5,8 @@ import { GiMicrophone, GiMusicalNotes } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 const HomeUserPage = () => {
-  const { data: artistsData, loading: artistsLoading, error: artistsError, callApi: fetchArtists } = useAxios(`/harmonyhub/artists?page_size=6`, 'GET', []);
-  const { data: songsData, loading: songsLoading, error: songsError, callApi: fetchSongs } = useAxios(`/harmonyhub/songs?page_size=6`, 'GET', []);
+  const { data: artistsData, loading: artistsLoading, error: artistsError, callApi: fetchArtists } = useAxios(`/harmonyhub/artists?page_size=9`, 'GET', []);
+  const { data: songsData, loading: songsLoading, error: songsError, callApi: fetchSongs } = useAxios(`/harmonyhub/songs?page_size=9`, 'GET', []);
 
   useEffect(() => {
     fetchArtists();

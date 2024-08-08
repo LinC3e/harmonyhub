@@ -16,25 +16,28 @@ const Header = () => {
       <nav className="flex flex-col w-full px-4">
         {/* sin credenciales*/}
         {!isAuthenticated && (
-          <Link to="/login" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+          <><Link to="/login" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
             <FaUser className="mr-2" /> Iniciar Sesion
-          </Link>
+          </Link><Link to="/" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+              <FaHome className="mr-2" /> Inicio
+            </Link></>
         )}
-        <Link to="/" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
-          <FaHome className="mr-2" /> Inicio
-        </Link>
+
         {/* con credenciales*/}
         {isAuthenticated && (
           <>
-          <Link to="/profile" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
-            <FaUser className="mr-2" />Perfil
-          </Link>
-          <Link to="/artists" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+            <Link to="/home" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+              <FaHome className="mr-2" /> Inicio
+            </Link>
+            <Link to="/profile" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+              <FaUser className="mr-2" />Perfil
+            </Link>
+            <Link to="/artists" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
               <FaAddressBook className="mr-2" />Artistas
             </Link>
-          <Link to="/songs" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
-            <FaMusic className="mr-2" />Canciones
-          </Link>
+            <Link to="/songs" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
+              <FaMusic className="mr-2" />Canciones
+            </Link>
             <Link to="/albums" className="flex items-center py-2 px-4 mb-2 hover:bg-gray-700 rounded">
               <FaAddressBook className="mr-2" />Albumes
             </Link>
