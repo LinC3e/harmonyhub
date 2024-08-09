@@ -16,23 +16,17 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="flex flex-col min-h-screen">
-          <div className="flex flex-grow">
-            <Header className="w-2/5 min-w-max" />
-            <div className="flex-grow flex flex-col">
-              <div className="flex-grow">
-                <Routes>
-                  <Route path='/' element={<HomePage />} />
-                  <Route path='/login' element={<LoginPage />} />
-                  <Route path='/albums' element={<AlbumPage />} />
-                  <Route path='/songs' element={<SongsPage />} />
-                  <Route path='/songs/:id' element={<SongDetailPage />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </div>
-              <Footer className="flex-shrink-0" />
-            </div>
-          </div>
+      <div className="flex flex-col min-h-screen">
+          <Header className="w-full flex-shrink-0" />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/albums" element={<AlbumPage />} />
+              <Route path="/songs" element={<SongsPage />} />
+              <Route path="/songs/:id" element={<SongDetailPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          <Footer className="w-full flex-shrink-0" />
         </div>
       </AuthProvider>
     </Router>

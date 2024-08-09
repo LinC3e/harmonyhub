@@ -25,10 +25,10 @@ const HomeUserPage = () => {
   const playlists = playlistsData.results || [];
 
   return (
-    <div>
+    <div className="p-4 bg-gray-900">
       {/* Artistas */}
-      <div className="p-4 overflow-x-auto whitespace-nowrap">
-        <div className="flex items-center justify-between mb-2">
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
             <FaAngleRight color="white" size={24} className="mr-2" />
             <h3 className="font-bold text-xl">Últimos Artistas</h3>
@@ -40,11 +40,11 @@ const HomeUserPage = () => {
             Mostrar Todos
           </Link>
         </div>
-        <div className="inline-flex gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-4">
           {artists.map((artist) => (
             <div
               key={artist.id}
-              className="inline-flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-colors duration-300 hover:bg-[#1d1d1d] w-40"
+              className="flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
             >
               {artist.image ? (
                 <img
@@ -64,8 +64,8 @@ const HomeUserPage = () => {
       </div>
 
       {/* Canciones */}
-      <div className="p-4 overflow-x-auto whitespace-nowrap">
-        <div className="flex items-center justify-between mb-2">
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
             <FaAngleRight color="white" size={24} className="mr-2" />
             <h3 className="font-bold text-xl">Últimas Canciones</h3>
@@ -77,12 +77,12 @@ const HomeUserPage = () => {
             Mostrar Todos
           </Link>
         </div>
-        <div className="inline-flex gap-4">
-        {songs.map((song) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-4">
+          {songs.map((song) => (
             <Link
               key={song.id}
               to={`/songs/${song.id}`}
-              className="inline-flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-colors duration-300 hover:bg-[#1d1d1d] hover:text-yellow-400 w-40"
+              className="flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:text-yellow-400"
             >
               {song.cover ? (
                 <img
@@ -102,8 +102,8 @@ const HomeUserPage = () => {
       </div>
 
       {/* PlayLists */}
-      <div className="p-4 overflow-x-auto whitespace-nowrap">
-        <div className="flex items-center justify-between mb-2">
+      <div>
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
             <FaAngleRight color="white" size={24} className="mr-2" />
             <h3 className="font-bold text-xl">Últimas PlayLists</h3>
@@ -115,21 +115,20 @@ const HomeUserPage = () => {
             Mostrar Todos
           </Link>
         </div>
-        <div className="inline-flex gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-4">
           {playlists.map((playlist) => (
             <div
               key={playlist.id}
-              className="inline-flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-colors duration-300 hover:bg-[#1d1d1d] w-40"
+              className="flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
             >
-            <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center mb-4">
-              <FaMusic className="text-gray-400 text-3xl" />
-            </div>
+              <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center mb-4">
+                <FaMusic className="text-gray-400 text-3xl" />
+              </div>
               <h3 className="text-sm font-semibold text-center truncate">{playlist.name}</h3>
             </div>
           ))}
         </div>
       </div>
-
     </div>
   );
 }
