@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import useAxios from '../../hooks/useAxios';
 
 const AlbumsList = () => {
-  const { data, loading, error, callApi } = useAxios('harmonyhub/albums/', 'GET', []);
+  const { data, loading, error, callApi } = useAxios('harmonyhub/albums?ordering=-created_at', 'GET', []);
 
   useEffect(() => {
     callApi();

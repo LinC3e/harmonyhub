@@ -3,7 +3,7 @@ import useAxios from "../../hooks/useAxios";
 
 const Artists = () => {
   const [page, setPage] = useState(1);
-  const { data, loading, error, callApi } = useAxios(`harmonyhub/artists/?page=${page}&page_size=7`, 'GET', []);
+  const { data, loading, error, callApi } = useAxios(`harmonyhub/artists/?page=${page}&page_size=7&ordering=-created_at`, 'GET', []);
 
   useEffect(() => {
     callApi();

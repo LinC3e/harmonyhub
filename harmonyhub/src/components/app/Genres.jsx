@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 
 const Genres = () => {
-  const { data, loading, error, callApi } = useAxios('harmonyhub/genres', 'GET', [])
+  const { data, loading, error, callApi } = useAxios('harmonyhub/genres?ordering=-created_at', 'GET', [])
   
   useEffect(() => {
     callApi();

@@ -12,7 +12,7 @@ export default function Layout() {
         <div className="flex flex-col flex-grow">
           <div className="flex-grow">
             <Outlet />
-            <Footer className="flex-shrink-0" />
+            <Footer />
           </div>
         </div>
       </div>
