@@ -1,9 +1,8 @@
-import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="py-6" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+    <footer className="py-6 bg-gray-800">
       <div className="container mx-auto flex flex-col items-center">
         <div className="flex space-x-4 mb-4">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent">

@@ -7,7 +7,7 @@ const useAxios = (endpoint, method, initialData = null) => {
   const [error, setError] = useState(null);
   const token = localStorage.getItem('token');
 
-  const callApi = useCallback(async (body = null) => {
+  const callApi = useCallback(async (body = null, isFileUpload = false) => {
     setLoading(true);
     setError(null);
 
@@ -18,7 +18,7 @@ const useAxios = (endpoint, method, initialData = null) => {
         method,
         data: body,
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': isFileUpload ? 'multipart/form-data' : 'application/json',
           ...(token && { 'Authorization': `Token ${token}` }),
         },
       };
@@ -31,7 +31,7 @@ const useAxios = (endpoint, method, initialData = null) => {
         method,
         data: body,
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': isFileUpload ? 'multipart/form-data' : 'application/json',
           ...(token && { 'Authorization': `Token ${token}` }),
         },
       });

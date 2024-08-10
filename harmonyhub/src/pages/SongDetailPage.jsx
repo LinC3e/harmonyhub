@@ -6,7 +6,7 @@ import { useSong } from "../context/SongContext";
 const SongDetailPage = () => {
   const { id } = useParams();
   const { setCurrentSong } = useSong();
-  const { data, loading, error, callApi } = useAxios(`harmonyhub/songs/${id}`, 'GET', []);
+  const { data, loading, error, callApi } = useAxios(`/harmonyhub/songs/${id}`, 'GET', []);
   
   useEffect(() => {
     callApi();

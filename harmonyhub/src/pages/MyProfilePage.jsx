@@ -4,7 +4,7 @@ import UserSongs from '../components/app/UserSongs'
 import placeholderImage from '/images/PlaceHolder.png';
 
 const MyProfilePage = () => {
-  const { data, loading, error, callApi } = useAxios('users/profiles/profile_data', 'GET', null);
+  const { data, loading, error, callApi } = useAxios('/users/profiles/profile_data', 'GET', null);
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {

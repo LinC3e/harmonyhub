@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router-dom";
+import CreateSongModal from "./CreateSongModal";
 
 const Songs = () => {
   const [page, setPage] = useState(1);
-  const { data, loading, error, callApi } = useAxios(`harmonyhub/songs/?page=${page}&page_size=7&ordering=-created_at`, 'GET', []);
+  const { data, loading, error, callApi } = useAxios(`/harmonyhub/songs/?page=${page}&page_size=7&ordering=-created_at`, 'GET', []);
 
   useEffect(() => {
     callApi();
@@ -17,6 +18,7 @@ const Songs = () => {
 
   return (
     <div>
+      <CreateSongModal />
       <ul>
         {songs && songs.length > 0 ? (
           songs.map(cancion => (
