@@ -41,31 +41,31 @@ const MyProfilePage = () => {
           </div>
 
           <div className="space-y-4">
-            <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300">
               <p className="text-lg font-semibold text-green-400">Username:</p>
               <p className="text-white">{profile.username}</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300">
               <p className="text-lg font-semibold text-green-400">Nombre:</p>
               <p className="text-white">{profile.first_name} {profile.last_name}</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300">
               <p className="text-lg font-semibold text-green-400">Email:</p>
               <p className="text-white">{profile.email}</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300">
               <p className="text-lg font-semibold text-green-400">Fecha de nacimiento:</p>
               <p className="text-white">{profile.dob ? new Date(profile.dob).toLocaleDateString() : 'No disponible'}</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300">
               <p className="text-lg font-semibold text-green-400">Biografía:</p>
               <p className="text-white">{profile.bio || 'No disponible'}</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300">
               <p className="text-lg font-semibold text-green-400">Fecha de alta:</p>
               <p className="text-white">{profile.created_at ? new Date(profile.created_at).toLocaleDateString() : 'No disponible'}</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300">
               <p className="text-lg font-semibold text-green-400">Fecha de modificación:</p>
               <p className="text-white">{profile.updated_at ? new Date(profile.updated_at).toLocaleDateString() : 'No disponible'}</p>
             </div>
@@ -92,3 +92,4 @@ const MyProfilePage = () => {
 };
 
 export default MyProfilePage;
+
