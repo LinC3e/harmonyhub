@@ -42,9 +42,10 @@ const HomeUserPage = () => {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-4">
           {artists.map((artist) => (
-            <div
+            <Link
               key={artist.id}
-              className="flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+              to={`/artists/${artist.id}`}
+              className="flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:text-yellow-400"
             >
               {artist.image ? (
                 <img
@@ -58,7 +59,7 @@ const HomeUserPage = () => {
                 </div>
               )}
               <h3 className="text-sm font-semibold text-center truncate">{artist.name}</h3>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

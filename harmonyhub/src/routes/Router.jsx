@@ -13,6 +13,7 @@ import MyProfilePage from "../pages/MyProfilePage";
 import ArtistsPage from "../pages/ArtistsPage";
 import HomeUserPage from "../pages/HomeUserPage";
 import PlayListsPage from "../pages/PlayListsPage";
+import ArtistDetailPage from "../pages/ArtistDetailPage";
 
 const Router = createBrowserRouter([
     {
@@ -71,6 +72,14 @@ const Router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <ArtistsPage />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: "artists/:id",
+                element: (
+                    <PrivateRoute>
+                        <ArtistDetailPage />
                     </PrivateRoute>
                 ),
             },

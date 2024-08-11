@@ -54,7 +54,7 @@ const UserSongs = ({ userId }) => {
       ) : (
         <>
           <p className="text-white text-center">No hay canciones disponibles.</p>
-          <p className='mt-5 p-5 bg-yellow-300 rounded-md font-medium text-yellow-800'>El usuario no cuenta con canciones publicadas.</p>
+          <p className='mt-5 p-5 bg-yellow-300 rounded-md font-medium text-yellow-800 text-center'>El usuario no cuenta con canciones publicadas.</p>
           <div className='mt-2 text-center'>
             <p className='font-bold mb-2'>¿Deseas subir una cancion?
             </p>
