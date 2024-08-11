@@ -118,15 +118,16 @@ const HomeUserPage = () => {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-4">
           {playlists.map((playlist) => (
-            <div
+            <Link
+              to={`/playlists/${playlist.id}`}
               key={playlist.id}
-              className="flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+              className="flex flex-col items-center bg-[#121212] p-4 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:text-yellow-400"
             >
               <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center mb-4">
                 <FaMusic className="text-gray-400 text-3xl" />
               </div>
               <h3 className="text-sm font-semibold text-center truncate">{playlist.name}</h3>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxios from "../hooks/useAxios";
 import { FaMusic } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const PlayListsPage = () => {
   const [page, setPage] = useState(1);
@@ -26,9 +27,10 @@ const PlayListsPage = () => {
         {/* grid de playlists */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {playlists.map((playlist) => (
-            <div
+            <Link
+              to={`/playlists/${playlist.id}`}
               key={playlist.id}
-              className="bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 hover:bg-gray-600"
             >
               <div className="flex items-center justify-center bg-gray-700 h-40 rounded-md">
                 <FaMusic className="text-white text-4xl" />
@@ -38,7 +40,7 @@ const PlayListsPage = () => {
               </p>
               <p className="text-sm text-gray-400 text-center mt-1">{`N° de canciones: ${playlist.entries.length}`}</p>
               <p className="text-sm text-gray-400 text-center">{`Creado el: ${new Date(playlist.created_at).toLocaleDateString()}`}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -59,18 +61,6 @@ const PlayListsPage = () => {
           Siguiente
         </button>
       </div>
-      {/* Footer */}
-      <footer className="mt-auto py-4">
-        <div className="text-center text-gray-400">
-          <p>© 2024 Desarrollado por: Costilla Matias, Diaz Carlos, Zurita Esteban</p>
-          <div className="flex justify-center mt-2 space-x-4">
-            <a href="#" className="text-green-500 hover:text-green-400">Facebook</a>
-            <a href="#" className="text-green-500 hover:text-green-400">Twitter</a>
-            <a href="#" className="text-green-500 hover:text-green-400">Instagram</a>
-            <a href="#" className="text-green-500 hover:text-green-400">LinkedIn</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
