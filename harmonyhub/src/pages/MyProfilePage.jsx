@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import useAxios from '../hooks/useAxios';
 import UserSongs from '../components/app/UserSongs';
 import placeholderImage from '/images/PlaceHolder.png';
+import EditProfileModal from '../components/app/EditProfileModal';
 
 const MyProfilePage = () => {
   const { data, loading, error, callApi } = useAxios('/users/profiles/profile_data', 'GET', null);
@@ -17,9 +18,15 @@ const MyProfilePage = () => {
     }
   }, [data]);
 
+  const handleRefresh = () => {
+    callApi();
+  };
+
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error.detail}</p>;
   if (!profile) return <p>No se encontraron datos del perfil.</p>;
+  console.log(profile.image)
+  let imgPro = `${import.meta.env.VITE_API_URL}${profile.image}`
 
   return (
     <div className="bg-gray-900 min-h-screen p-6">
@@ -32,14 +39,14 @@ const MyProfilePage = () => {
           <div className="flex justify-center mb-4">
             <div className="relative w-24 h-24">
               <img
-                src={profile.image || placeholderImage}
+                src={imgPro|| placeholderImage}
                 alt="Imagen de perfil"
                 className="w-full h-full rounded-full border-8 border-gray-900 object-cover"
               />
               <div className="absolute inset-0 rounded-full border-4 border-green-500"></div>
             </div>
           </div>
-
+          <EditProfileModal profileId={profile.user__id} onSuccess={handleRefresh}/>
           <div className="space-y-4">
             <div className="bg-gray-900 p-4 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300">
               <p className="text-lg font-semibold text-green-400">Username:</p>
