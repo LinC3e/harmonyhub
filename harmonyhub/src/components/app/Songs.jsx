@@ -19,24 +19,24 @@ const Songs = () => {
 
   return (
     <div className="p-4 mt-8">
-      {/* Título "Canciones" */}
+      {/* titulo canciones */}
       <div className="flex items-center">
         <span className="text-base text-white mr-2">{'>'}</span>
         <h1 className="text-xl font-bold text-white">Canciones</h1>
       </div>
       <div className="mt-4"></div>
 
-      {/* Contenedor de botones */}
+      {/* contenedor de botones */}
       <div className="flex justify-between mb-4">
        <CreateSongModal/>
-        {/* Botón de "Reproducción Aleatoria" */}
+        {/* boton de reproduccion aliatoria */}
         <button className="flex items-center justify-center p-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition duration-300">
           <FaRandom className="h-5 w-5 mr-2" />
           Reproducción Aleatoria
         </button>
       </div>
 
-      {/* Lista de canciones */}
+      {/* lista de concione*/}
       <ul className="space-y-2">
         {songs.map((song) => (
           <li key={song.id} className="flex items-center justify-between p-2 bg-gray-900 rounded-lg hover:bg-gray-800 transition duration-300">
@@ -61,7 +61,7 @@ const Songs = () => {
         ))}
       </ul>
 
-      {/* Paginación */}
+      {/* paginacion */}
       <div className="flex justify-between items-center mt-8 px-4">
         <button
           disabled={!data.previous}
