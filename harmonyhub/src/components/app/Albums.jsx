@@ -4,8 +4,7 @@ import { FaMusic } from 'react-icons/fa';
 
 const Albums = () => {
   const [page, setPage] = useState(1);
-  // Aquí aumentamos el page_size para que traiga más álbumes por página
-  const { data, loading, error, callApi } = useAxios(`harmonyhub/albums/?page=${page}&page_size=15`, 'GET', []);
+  const { data, loading, error, callApi } = useAxios(`/harmonyhub/albums?page=${page}&page_size=15`, 'GET', []);
 
   useEffect(() => {
     callApi();
@@ -67,18 +66,6 @@ const Albums = () => {
           Siguiente
         </button>
       </div>
-      {/* Footer */}
-      <footer className="mt-auto py-4">
-        <div className="text-center text-gray-400">
-          <p>© 2024 Desarrollado por: Costilla Matias, Diaz Carlos, Zurita Esteban</p>
-          <div className="flex justify-center mt-2 space-x-4">
-            <a href="#" className="text-green-500 hover:text-green-400">Facebook</a>
-            <a href="#" className="text-green-500 hover:text-green-400">Twitter</a>
-            <a href="#" className="text-green-500 hover:text-green-400">Instagram</a>
-            <a href="#" className="text-green-500 hover:text-green-400">LinkedIn</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

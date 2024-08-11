@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import CreateSongModal from "./CreateSongModal";
-import { FaRandom, FaThumbsUp } from "react-icons/fa";
+import { FaEye, FaRandom } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 const Songs = () => {
@@ -43,9 +44,11 @@ const Songs = () => {
             <div className="flex items-center space-x-4">
               <img src={song.cover || '/images/default-cover.png'} alt={song.title} className="w-12 h-12 rounded-md object-cover" />
               <div>
-                <p className="text-green-500 font-semibold hover:text-yellow-500 transition-colors duration-300">
-                {song.title}
-                </p>
+                <Link to={`/songs/${song.id}`}>
+                  <p className="text-green-500 font-semibold hover:text-yellow-500 transition-colors duration-300">
+                    {song.title}
+                  </p>
+                </Link>
                 <p className="text-gray-400 text-sm">{song.artist}</p>
               </div>
             </div>
@@ -53,8 +56,8 @@ const Songs = () => {
               <p className="text-gray-400">{song.album}</p>
               <p className="text-gray-400">{song.duration}</p>
               <div className="flex items-center space-x-2">
-                <FaThumbsUp className="text-gray-400 cursor-pointer hover:text-white transition duration-300" />
-                <p className="text-gray-400">{song.view_count}</p>
+                <FaEye className="text-gray-400 cursor-pointer hover:text-white transition duration-300" />
+                <p className="text-yellow-400">{song.view_count}</p>
               </div>
             </div>
           </li>
