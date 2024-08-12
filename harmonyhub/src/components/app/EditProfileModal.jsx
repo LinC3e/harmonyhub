@@ -13,8 +13,8 @@ const EditProfileModal = ({ profileId, onSuccess }) => {
   const [imageFile, setImageFile] = useState(null);
   const [imageFileName, setImageFileName] = useState('');
   
-  const { data: profileData, loading: profileLoading, error: profileError, callApi: getProfile } = useAxios(`/users/profiles/${profileId}`, 'GET', []);
-  const { data, loading, error, callApi } = useAxios(`/users/profiles/${profileId}`, 'PATCH', []);
+  const { data: profileData, error: profileError, callApi: getProfile } = useAxios(`/users/profiles/${profileId}`, 'GET', []);
+  const { loading, error, callApi } = useAxios(`/users/profiles/${profileId}`, 'PATCH', []);
 
   useEffect(() => {
     if (isOpen) {

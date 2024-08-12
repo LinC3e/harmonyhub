@@ -3,6 +3,7 @@ import useAxios from '../hooks/useAxios';
 import UserSongs from '../components/app/UserSongs';
 import placeholderImage from '/images/PlaceHolder.png';
 import EditProfileModal from '../components/app/EditProfileModal';
+import Loading from '../components/app/Loading';
 
 const MyProfilePage = () => {
   const { data, loading, error, callApi } = useAxios('/users/profiles/profile_data', 'GET', null);
@@ -22,12 +23,12 @@ const MyProfilePage = () => {
     callApi();
   };
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error: {error.detail}</p>;
   if (!profile) return <p>No se encontraron datos del perfil.</p>;
-  console.log(profile.image)
-  let imgPro = `${import.meta.env.VITE_API_URL}${profile.image}`
 
+  const imgPro = profile.image ? `${import.meta.env.VITE_API_URL}${profile.image}` : placeholderImage;
+  console.log(imgPro)
   return (
     <div className="bg-gray-900 min-h-screen p-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -39,7 +40,7 @@ const MyProfilePage = () => {
           <div className="flex justify-center mb-4">
             <div className="relative w-24 h-24">
               <img
-                src={imgPro|| placeholderImage}
+                src={imgPro}
                 alt="Imagen de perfil"
                 className="w-full h-full rounded-full border-8 border-gray-900 object-cover"
               />

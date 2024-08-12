@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import { FaGlobe, FaMusic, FaUser } from "react-icons/fa";
+import Loading from "../components/app/Loading";
 
 const PlayListDetailPage = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const PlayListDetailPage = () => {
     callApi();
   }, [callApi, id]);
 
-  if (loading) return <p className="text-white">Cargando...</p>;
+  if (loading) return <Loading />;
   if (error) return <p className="text-red-500">Error: {error.detail}</p>;
 
   const playlist = data;
@@ -45,7 +46,8 @@ const PlayListDetailPage = () => {
             {playlist.entries.length > 0 ? (
               <ul className="space-y-3">
                 {playlist.entries.map((songId, index) => (
-                  <li
+                  <Link
+                    to={`/songs/${songId}`}
                     key={songId}
                     className="bg-gray-700 p-4 rounded-md shadow-md flex items-center justify-between transition transform hover:scale-105 hover:bg-gray-600"
                   >
@@ -54,7 +56,7 @@ const PlayListDetailPage = () => {
                       <p className="text-white text-lg font-medium">{`Canción #${index + 1}`}</p>
                     </div>
                     <span className="text-sm text-gray-400">ID: {songId}</span>
-                  </li>
+                  </Link>
                 ))}
               </ul>
             ) : (

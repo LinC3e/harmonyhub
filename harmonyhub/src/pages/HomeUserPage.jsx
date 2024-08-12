@@ -3,6 +3,7 @@ import useAxios from "../hooks/useAxios";
 import { FaAngleRight, FaMusic } from "react-icons/fa";
 import { GiMicrophone, GiMusicalNotes } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import Loading from "../components/app/Loading";
 
 const HomeUserPage = () => {
   const { data: artistsData, loading: artistsLoading, error: artistsError, callApi: fetchArtists } = useAxios(`/harmonyhub/artists?page_size=9&ordering=-created_at`, 'GET', []);
@@ -15,7 +16,7 @@ const HomeUserPage = () => {
     fetchPlaylist();
   }, [fetchArtists, fetchPlaylist, fetchSongs]);
 
-  if (artistsLoading || songsLoading || playlistsLoading) return <p>Cargando...</p>;
+  if (artistsLoading || songsLoading || playlistsLoading) return <Loading />;
   if (artistsError) return <p>Error en artistas: {artistsError.detail}</p>;
   if (songsError) return <p>Error en canciones: {songsError.detail}</p>;
   if (playlistsError) return <p>Error en playlists: {playlistsError.detail}</p>
@@ -26,6 +27,7 @@ const HomeUserPage = () => {
 
   return (
     <div className="p-4 bg-gray-900">
+      <h1 className="text-center font-bold uppercase mb-5 p-5 bg-gray-800">HarmonyHub</h1>
       {/* Artistas */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">

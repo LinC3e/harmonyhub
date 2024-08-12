@@ -3,6 +3,7 @@ import useAxios from "../../hooks/useAxios";
 import CreateSongModal from "./CreateSongModal";
 import { FaEye, FaRandom } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 
 const Songs = () => {
@@ -13,7 +14,7 @@ const Songs = () => {
     callApi();
   }, [page, callApi]);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error: {error.detail}</p>;
 
   const songs = data.results || [];

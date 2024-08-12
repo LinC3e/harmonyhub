@@ -116,12 +116,6 @@ const GlobalSongCard = () => {
           )}
           {currentSong.album && <p className="text-sm">Álbum: {currentSong.album}</p>}
           <p className="text-sm">Propietario: {currentSong.owner}</p>
-          {currentSong.artists && currentSong.artists.length > 0 && (
-            <p className="text-sm">Artistas: {currentSong.artists.join(', ')}</p>
-          )}
-          {currentSong.genres && currentSong.genres.length > 0 && (
-            <p className="text-sm">Géneros: {currentSong.genres.join(', ')}</p>
-          )}
         </div>
       )}
       {isMinimized && currentSong.song_file && (

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import { FaMusic } from 'react-icons/fa';
+import Loading from "../components/app/Loading";
 
 const ArtistDetailPage = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const ArtistDetailPage = () => {
     callApi();
   }, [callApi, id]);
 
-  if (loading) return <p className="text-white">Cargando...</p>;
+  if (loading) return <Loading />;
   if (error) return <p className="text-red-500">Error: {error.detail}</p>;
 
   const artist = data;

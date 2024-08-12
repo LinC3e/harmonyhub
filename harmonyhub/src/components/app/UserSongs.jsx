@@ -3,6 +3,7 @@ import useAxios from '../../hooks/useAxios';
 import { Link } from 'react-router-dom';
 import DeleteSongModal from './DeleteSongModal';
 import CreateSongModal from './CreateSongModal';
+import Loading from './Loading';
 
 // eslint-disable-next-line react/prop-types
 const UserSongs = ({ userId }) => {
@@ -25,7 +26,7 @@ const UserSongs = ({ userId }) => {
     setSongs((prevSongs) => prevSongs.filter((song) => song.id !== deletedSongId));
   };
 
-  if (loading) return <p>Cargando canciones...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error al cargar las canciones: {error.detail}</p>;
 
   return (

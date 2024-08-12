@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../hooks/useAxios";
 import { FaMusic } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Loading from "../components/app/Loading";
 
 const PlayListsPage = () => {
   const [page, setPage] = useState(1);
@@ -11,7 +12,7 @@ const PlayListsPage = () => {
     callApi();
   }, [page, callApi]);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error: {error.detail}</p>;
 
   const playlists = data.results || [];

@@ -1,8 +1,9 @@
-import { FaAddressBook, FaBars, FaHome, FaMusic, FaSignOutAlt, FaTimes, FaUser } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/authContext";
 //import logo from '/images/logo.png';
 import { useState } from 'react';
+import { FaAddressBook, FaBars, FaHome, FaMusic, FaSignOutAlt, FaTimes, FaUser } from 'react-icons/fa';
+import { MdQueueMusic } from 'react-icons/md';
 
 const Header = () => {
   const { logout } = useAuth("actions")
@@ -14,7 +15,7 @@ const Header = () => {
   };
 
   return  (
-    <header className={`flex flex-col items-center py-4 min-h-screen bg-gray-900 text-white ${isOpen ? "w-80" : "w-20 border-r-2 border-primary"} transition-all duration-300`}>
+    <header className={`flex flex-col items-center py-4 min-h-screen bg-gray-900 text-white ${isOpen ? "w-80 border-r-2 border-primary"  : "w-20 border-r-2 border-primary"} transition-all duration-300`}>
       <div className="mb-8 w-full flex justify-between items-center px-4">
         <Link to="/" className="flex items-center justify-center py-2 mb-2 w-full">
           {isOpen && <span className="ml-2">HarmonyHub</span>}
@@ -54,6 +55,10 @@ const Header = () => {
             <Link to="/songs" className="flex items-center justify-center py-2 mb-2 hover:bg-gray-700 rounded-full w-full">
               <FaMusic className="text-xl" />
               {isOpen && <span className="ml-2">Canciones</span>}
+            </Link>
+            <Link to="/playlists" className="flex items-center justify-center py-2 mb-2 hover:bg-gray-700 rounded-full w-full">
+              <MdQueueMusic className="text-xl" />
+              {isOpen && <span className="ml-2">PlayLists</span>}
             </Link>
             <Link to="/albums" className="flex items-center justify-center py-2 mb-2 hover:bg-gray-700 rounded-full w-full">
               <FaAddressBook className="text-xl" />

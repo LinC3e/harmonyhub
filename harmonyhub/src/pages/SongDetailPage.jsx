@@ -1,36 +1,66 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSong } from "../context/SongContext";
 import useAxios from "../hooks/useAxios";
+import Loading from "../components/app/Loading";
 
 const SongDetailPage = () => {
   const { id } = useParams();
   const { setCurrentSong } = useSong();
-  const { data, loading, error, callApi } = useAxios(`/harmonyhub/songs/${id}`, 'GET', []);
   
+  const { data: songData, loading: songLoading, error: songError, callApi: getSong } = useAxios(`/harmonyhub/songs/${id}`, 'GET', []);
+  const { data: ownerData, loading: ownerLoading, error: ownerError, callApi: getOwner } = useAxios(`/users/profiles/${songData.owner}`, 'GET', []);
+  console.log(songData.owner)
+  const [song, setSong] = useState(null);
+  const [owner, setOwner] = useState(null);
+
   useEffect(() => {
-    callApi();
-  }, [callApi, id]);
+    getSong();
+  }, [getSong, id]);
 
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>Error: {error.detail}</p>;
+  useEffect(() => {
+    if (songData) {
+      setSong(songData);
+      if (songData.owner) {
+        getOwner();
+      }
+    }
+  }, [songData, getOwner]);
 
-  const song = data;
+  useEffect(() => {
+    if (ownerData) {
+      setOwner(ownerData);
+    }
+  }, [ownerData]);
+
+  if (songLoading || ownerLoading) return <Loading />;
+  if (songError) return <p>Error al obtener canción: {songError.detail}</p>;
+  if (ownerError) return <p>Error al obtener owner: {ownerError.detail}</p>;
 
   return (
-    <div className="mt-32 p-6 border border-gray-200 rounded-lg flex flex-col items-center bg-gray-800 text-white space-y-4 animate-fade-in">
+    <div className="min-h-screen bg-gray-900 p-6 flex flex-col items-center">
       {song ? (
-        <>
-          <h2 className="text-xl font-semibold text-green-500 animate-slide-down">{song.title}</h2>
-          {song.year && <p className="text-base">Año: {song.year}</p>}
-          {song.duration && <p className="text-base">Duración: {song.duration} segundos</p>}
+        <div className="max-w-3xl w-full bg-gray-800 p-6 border border-gray-700 rounded-lg shadow-lg">
+          {song.cover && (
+            <div className="flex justify-center mb-6">
+              <img
+                src={song.cover}
+                alt={`Portada de ${song.title}`}
+                className="w-full max-w-xs h-auto rounded-lg border border-gray-600"
+              />
+            </div>
+          )}
+          <h2 className="text-3xl font-semibold text-green-400 mb-2">{song.title}</h2>
+          {song.year && <p className="text-lg text-gray-300">Año: {song.year}</p>}
+          {song.duration && <p className="text-lg text-gray-300">Duración: {song.duration} segundos</p>}
+          
           {song.song_file && (
-            <div className="w-full flex flex-col items-center">
-              <div className="relative w-full max-w-md bg-gray-900 border border-gray-600 rounded-lg shadow-lg p-4 hover:shadow-xl hover:border-green-500 transition-all duration-300 transform hover:scale-105 animate-slide-in">
+            <div className="w-full my-4">
+              <div className="bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                 <audio
                   id="audio-player"
                   controls
-                  className="w-full text-green-500"
+                  className="w-full text-green-400"
                 >
                   <source src={song.song_file} type="audio/mpeg" />
                   Tu navegador no soporta el elemento de audio.
@@ -38,23 +68,29 @@ const SongDetailPage = () => {
               </div>
             </div>
           )}
-          {song.album && <p className="text-base">Álbum: {song.album}</p>}
-          <p className="text-base">Propietario: {song.owner}</p>
-          {song.artists && song.artists.length > 0 && (
-            <p className="text-base">Artistas: {song.artists.join(', ')}</p>
+          
+          {song.album && <p className="text-lg text-gray-300">Álbum: {song.album}</p>}
+
+          {/* Tarjeta del propietario */}
+          {owner && (
+            <div className="mt-6 max-w-xs w-full bg-gray-700 p-4 border border-gray-600 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-green-400 mb-2">Propietario</h3>
+              <p className="text-lg text-gray-300">Nombre de usuario: <span className="font-medium">{owner.username}</span></p>
+              <p className="text-lg text-gray-300">Nombre: <span className="font-medium">{owner.first_name} {owner.last_name}</span></p>
+            </div>
           )}
-          {song.genres && song.genres.length > 0 && (
-            <p className="text-base">Géneros: {song.genres.join(', ')}</p>
-          )}
-          <button
-            onClick={() => setCurrentSong(song)}
-            className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 hover:scale-105 transition-transform duration-300 animate-pulse-once"
-          >
-            Escuchar globalmente
-          </button>
-        </>
+
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => setCurrentSong(song)}
+              className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-300 shadow-md hover:shadow-lg"
+            >
+              Escuchar globalmente
+            </button>
+          </div>
+        </div>
       ) : (
-        <p>No se encontró la canción.</p>
+        <p className="text-center text-gray-400">No se encontró la canción.</p>
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 const Artists = () => {
   const [page, setPage] = useState(1);
@@ -10,7 +11,7 @@ const Artists = () => {
     callApi();
   }, [page, callApi]);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error: {error.detail}</p>;
 
   const artists = data.results || [];

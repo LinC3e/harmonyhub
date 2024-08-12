@@ -13,20 +13,25 @@
 
 3. Estructura del Código
 
-    src/components/:
-        app/:
-            GlobalCardSong.jsx: Componente del reproductor global que permite la reproducción de música en todas las páginas.
-            Header.jsx, Footer.jsx: Componentes que estructuran la navegación y pie de página.
-        pages/:
-            SongDetailPage.jsx: Muestra detalles de la canción seleccionada con un reproductor local.
-            AlbumPage.jsx, ArtistDetailPage.jsx: Páginas que muestran información detallada sobre álbumes y artistas.
-    src/context/:
-        SongContext.jsx: Proporciona el estado global de la aplicación relacionado con la canción actual y su reproducción.
+```
+src/componets/
+              app/   - para componente reutilizables
+              layouts/  - para componentes que comparten todas las paginas
+    
+    /context/  - para los contextos
+
+    /hooks/    - hooks personalizados
+    
+    /pages/    - todas las paginas accesibles
+
+    /routes/   - enrutamiento y proteccion de rutas
+            
+```
 
 4. Decisiones de Diseño
 
     Uso de Context API: Se eligió Context API para manejar el estado global de la canción actual, permitiendo que el reproductor global tenga acceso a la canción y su estado de reproducción desde cualquier parte de la aplicación.
-    Estilo con Tailwind CSS: Tailwind CSS fue elegido por su capacidad para crear un diseño responsivo rápidamente, con un sistema de utilidades que permite aplicar clases CSS directamente en el JSX.
+    Estilo con Bulma y Tailwind CSS: Tailwind CSS fue elegido por su capacidad para crear un diseño responsivo rápidamente, con un sistema de utilidades que permite aplicar clases CSS directamente en el JSX.
     Vite como Herramienta de Construcción: Vite se eligió por su rapidez en el desarrollo local y su capacidad de manejar proyectos modernos de React con configuración mínima.
     Reproductor Global: Decisión de implementar un reproductor global que permanezca activo mientras el usuario navega por la aplicación para mejorar la experiencia del usuario.
 
@@ -34,7 +39,6 @@
 
     Optimización de Carga: Considerar la optimización de carga de componentes y datos para mejorar la velocidad de la aplicación.
     Soporte para Listas de Reproducción: Agregar funcionalidad para crear y gestionar listas de reproducción personalizadas.
-    Integración con API de Streaming: Ampliar la funcionalidad para integrar servicios de streaming en tiempo real.
 
 6. Conclusión
 
