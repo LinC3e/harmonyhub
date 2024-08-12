@@ -1,6 +1,6 @@
-import { useSong } from '../../context/SongContext';
 import { useEffect, useState } from 'react';
-import { FaTimes, FaChevronDown, FaChevronUp, FaPlay, FaPause } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaPause, FaPlay, FaTimes } from 'react-icons/fa';
+import { useSong } from '../../context/SongContext';
 
 const GlobalSongCard = () => {
   const { currentSong, setCurrentSong, currentTime, setCurrentTime } = useSong();
